@@ -23,8 +23,8 @@ export const ModalAdicionarUsuarios = ({ isOpen, toggle, usuario }) => {
   const [apellido, setApellido] = useState("");
   const [identificacion, setIdentificacion] = useState("");
   const [correo, setCorreo] = useState("");
-  // const [rol, setRol] = useState('')
-  // const [estado, setEstado] = useState('')
+  const [rol, setRol] = useState('')
+  const [estado, setEstado] = useState('')
 
   const formData = {
     nombre: nombre,
@@ -41,11 +41,15 @@ export const ModalAdicionarUsuarios = ({ isOpen, toggle, usuario }) => {
       setApellido(usuario.apellido);
       setIdentificacion(usuario.identificacion);
       setCorreo(usuario.correo);
+      setRol(usuario.rol)
+      setEstado(usuario.estado)
     } else {
       setNombre("");
       setApellido("");
       setIdentificacion("");
       setCorreo('')
+      setRol('')
+      setEstado('')
     }
   }, [usuario]);
 
@@ -136,6 +140,32 @@ export const ModalAdicionarUsuarios = ({ isOpen, toggle, usuario }) => {
               placeholder="Digite..."
               onChange={(e) => setCorreo(e.target.value)}
             />
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type={"select"}
+              size="2"
+              value={rol}
+              onChange={ (e) => setRol(e.target.value)}
+            >
+              <option value="" hidden></option>
+              <option value={"Estudiante"}>Estudiante</option>
+              <option value={"Administrador"}>Administrador</option>
+              <option value={"lider"}>lider </option>
+              <option value={"Usuario"}>Usuario</option>
+            </Input>
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type={"select"}
+              size="2"
+              value={estado}
+              onChange={ (e) => setEstado(e.target.value)}
+            >
+              <option value="" hidden></option>
+              <option value={"Autorizado"}>Autorizado</option>
+              <option value={"No Autorizado"}>No Autorizado</option>
+            </Input>
           </FormGroup>
         </Form>
       </ModalBody>
