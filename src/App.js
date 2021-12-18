@@ -24,7 +24,7 @@ function App() {
   // });
   
   const client = new ApolloClient({
-    uri: "http://localhost:4000/graphql",
+    uri: "https://resilientes-back.herokuapp.com/graphql",
     cache: new InMemoryCache(),
     onError: ({ networkError, graphQLErrors }) => {
       console.log('graphQLErrors', graphQLErrors)
